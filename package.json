@@ -2,9 +2,11 @@
   "name": "odas",
   "version": "1.0.0",
   "description": "Online Medical Consultation Scheduling Application",
-  "main": "server.js",
+  "main": "build/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node build/server.js",
+    "start:dev": "nodemon build/server.js",
+    "build": "npx babel /src --out-dir /build --copy-files"
   },
   "keywords": [
     "Medical",
@@ -15,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
+    "express-session": "^1.15.6",
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
     "pug": "^2.0.3",
@@ -25,6 +28,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "nodemon": "^1.17.5",
+    "npx": "^10.2.0",
     "sequelize-cli": "^4.0.0"
   }
 }
