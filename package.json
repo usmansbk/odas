@@ -1,0 +1,30 @@
+{
+  "name": "odas",
+  "version": "1.0.0",
+  "description": "Online Medical Consultation Scheduling Application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Medical",
+    "JS",
+    "Scheduler"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "pg": "^7.4.3",
+    "pg-hstore": "^2.3.2",
+    "pug": "^2.0.3",
+    "sequelize": "^4.37.10"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.17.5",
+    "sequelize-cli": "^4.0.0"
+  }
+}
