@@ -27,16 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     active: {
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
-        notEmpty: true,
-      }
-    },
-    type: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isAlpha: true,
         notEmpty: true,
       }
     },
