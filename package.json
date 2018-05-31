@@ -4,9 +4,9 @@
   "description": "Online Medical Consultation Scheduling Application",
   "main": "build/server.js",
   "scripts": {
-    "start": "node build/server.js",
-    "start:dev": "nodemon build/server.js",
-    "build": "npx babel /src --out-dir /build --copy-files"
+    "start": "node build/bin/www",
+    "start:dev": "nodemon build/bin/www",
+    "build": "npx babel ./src --out-dir ./build --copy-files"
   },
   "keywords": [
     "Medical",
