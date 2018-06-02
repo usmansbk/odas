@@ -1,67 +1,65 @@
 import express from 'express';
-import app from './server';
+import {
+  UserController,
+  DoctorController,
+  RoutesController,
+  AppointmentController,
+} from './controllers';
 
-const router = express.Router();
+const appRouter = express.Router();
+const apiRouter = express.Router();
 
-app.get('/home', (req, res) => {
-  res.send('Welcome client');
-});
+apiRouter.route('/api/cancel/appointment/:id')
+  .post(AppointmentController.cancelAppointment);
 
-app.get('/dashboard', (req, res) => {
-  res.send('Welcome Doctor!');
-});
+apiRouter.route('/api/confirm/appointment/:id')
+  .post(AppointmentController.confirmAppointment);
 
-// login/doctor
-app.post('/login/doctor', (req, res) => {
-  res.send('Welcome Doctor!');
-});
-// login/patient
-app.post('/login', (req, res) => {
-  res.send('Welcome Patient!');
-});
-// signup/doctor
-app.post('/signup/doctor', (req, res) => {
-  res.send('Created professional account');
-});
-// signup/patient
-app.post('/signup', (req, res) => {
-  res.send('Created client account');
-});
+apiRouter.route('/api/view/appointment/:id')
+  .get(UserController.getAppointment);
 
-// find doctor in location
-app.post('/search', (req, res) => {
-  res.send('Searching for doctor');
-});
-// schedule appointment
-app.post('/schedule', (req, res) => {
-  res.send('Schedule appointment');
-});
-// cancel appointment
-app.post('/cancel', (req, res) => {
-  res.send('Cancel appointment');
-});
+apiRouter.route('/api/appointment/:id')
+  .get(UserController.newAppointment)
+  .post(UserController.makeAppointment);
 
-// get user preferred doctors list
-app.get('/user/doctors', (req, res) => {
-  res.send('Get all doctors');
-});
+apiRouter.route('/api/user/:id')
+  .get(UserController.getProfile);
 
-// view doctors profile
-app.get('/doctor/:dr_id', (req, res) => {
-  res.send('Get doctor information');
-});
-// get appointsments
-app.get('/doctor/appointments', (req, res) => {
-  res.send('Get total number of appointments');
-});
+apiRouter.route('/api/user/public/:id')
+  .get(UserController.getPublicProfile);
 
-app.get('/doctor/appointment/:app_id', (req, res) => {
-  res.send('Get specific appointment');
-});
+apiRouter.route('/api/update/user/:id')
+  .post(UserController.updateProfile);
 
-// charge route
-router.get('/about', (req, res) => {
-  res.send('About ODAS');
-});
+apiRouter.route('/api/edit/user/:id')
+  .get(UserController.editProfile);
 
-export default router;
+apiRouter.route('/api/update/doctor/:id')
+  .post(DoctorController.updateProfile);
+
+apiRouter.route('/api/edit/doctor/:id')
+.get(DoctorController.editProfile);
+
+apiRouter.route('/api/doctor/:id')
+  .get(DoctorController.getProfile);
+
+appRouter.route('/search')
+  .get(DoctorController.search);
+
+appRouter.route('/dashboard')
+  .get(RoutesController.dashboard);
+
+appRouter.get('/',RoutesController.index);
+
+appRouter.route('/login')
+  .post(UserController.logIn)
+  .get(RoutesController.login);
+
+appRouter.route('/signup')
+  .post(UserController.createAccount)
+  .get(RoutesController.signup);
+
+export {
+  appRouter,
+  apiRouter
+};

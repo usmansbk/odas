@@ -1,0 +1,10 @@
+<nav class="navbar navbar-light bg-light">
+  <%- include('logo') %>
+  <a class="navbar-brand" href="#">Online Doctor Appointment Scheduler</a>
+  <a href=<%=`/api/user/${user.id}`%> class="text-info navbar-link mr-sm-2">
+    <i class="fas fa-user-circle"></i> <%=user.firstname%> <%=user.surname%>
+  </a>
+  <form class="form" method="POST" action="/logout">
+    <button id="logout" class="btn btn-outline-secondary" type="submit">Logout</button>
+  </form>
+</nav>

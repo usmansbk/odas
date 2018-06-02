@@ -1,0 +1,44 @@
+<%- include('partials/head') %>
+<div></div>
+<%- include('partials/searchheader') %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 m-sm-2 col-lg-6 align-content-center">
+      <h4 class="text-info">My profile</h4>
+      <form action=<%=`/api/edit/user/${user.id}`%> >
+        <div class="form-group">
+          <lable for="firstname">Firstname</lable>
+          <input class="form-control" type="text" id="firstname" value="<%=user.firstname%>" readonly >
+        </div>
+        <div class="form-group">
+          <lable for="surname">Surname</lable>
+          <input class="form-control" type="text" id="surname" value="<%=user.surname%>" readonly >
+        </div>
+        <div class="form-group">
+          <lable for="email">Email</lable>
+          <input class="form-control" type="email" id="email" value="<%=user.email%>" readonly >
+        </div>
+        <div class="form-group">
+          <lable for="gender">Gender</lable>
+          <input class="form-control" type="text" id="gender" value="<%=user.gender%>" readonly >
+        </div>
+        <div class="form-group">
+          <lable for="birthday">Birthday</lable>
+          <input class="form-control" type="date" id="birthday" value="<%=user.birthday%>" readonly >
+        </div>
+        <div class="form-group">
+          <button class="form-control btn btn-outline-secondary" type="submit">Edit</button>
+        </div>
+      </form>
+      <% if (user.accountType === 'DOCTOR') { %>
+        <%- include('partials/professional', { doctor, user}) %>
+        <form action=<%= `/api/edit/doctor/${doctor.id}` %> >  
+          <div class="form-group">
+            <button class="form-control btn btn-outline-secondary" type="submit">Edit</button>
+          </div>
+        </form>
+      <% } %>
+    </div>
+  </div>
+</div>
+<%- include('partials/foot'); %>

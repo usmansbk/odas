@@ -1,103 +1,72 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Doctor = sequelize.define('Doctor', {
+    email: {
+      type: DataTypes.STRING,
+    },
     firstname: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isAlpha: true,
-        notEmpty: true,
-      }
     },
     surname: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isAlpha: true,
-        notEmpty: true,
-      }
     },
     gender: {
       type: DataTypes.ENUM('MALE', 'FEMALE'),
-      allowNull: false,
     },
-    email: {
+    birthday: {
       type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true,
-        notEmpty: true,
-      }
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [7, 33],
-        notEmpty: true,
-      }
     },
     degree: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      }
     },
     designation: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      }
     },
     experience: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
-    fees: {
-      type: DataTypes.DOUBLE,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      }
+    fee: {
+      type: DataTypes.STRING,
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      }
     },
     country: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      }
     },
     city: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     speciality: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      }
     },
     category: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      }
-    }
+    },
+    latitude: {
+      type: DataTypes.STRING,
+    },
+    longitude: {
+      type: DataTypes.STRING,
+    },
+    cl_name: {
+      type: DataTypes.STRING,
+    },
+    cl_address: {
+      type: DataTypes.STRING,
+    },
+    cl_phone: {
+      type: DataTypes.STRING,
+    },
+    cl_fee: {
+      type: DataTypes.STRING,
+    },
+    cl_facilities: {
+      type: DataTypes.TEXT,
+    },
   }, {});
   Doctor.associate = function(models) {
-    //
+    const { Appointment } = models;
   };
   return Doctor;
 };

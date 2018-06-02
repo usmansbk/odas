@@ -1,17 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var User = sequelize.define('User', {
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isAlpha: true,
-        notEmpty: true,
-      }
-    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       validate: {
         notEmpty: true,
         isEmail: true,
@@ -25,15 +18,46 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true,
       }
     },
-    active: {
+    firstname: {
       type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      }
+    },
+    surname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      }
+    },
+    accountType: {
+      type: DataTypes.ENUM('DOCTOR', 'PATIENT'),
+      defaultValue: 'PATIENT',
+      validate: {
+        notEmpty: true,
+      }
+    },
+    gender: {
+      type: DataTypes.ENUM('MALE', 'FEMALE'),
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      }
+    },
+    birthday: {
+      type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         notEmpty: true,
       }
     },
   }, {});
   User.associate = function(models) {
-    // associations can be defined here
+    const { Doctor, Appointment } = models;
+    User.hasOne(Doctor, { as: 'DoctorProfile' });
+    User.belongsToMany(Appointment, { through: 'UserAppointment'});
   };
   return User;
 };

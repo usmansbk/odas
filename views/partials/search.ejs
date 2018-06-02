@@ -1,0 +1,17 @@
+<div class="col p-3 m-4 card">
+<h4 class="text-muted align-self-center">Find a nearest Doctor</h4>
+<h6 class="text-info align-self-center" id='message-label'></h6>
+<form id="search-form" class="form-inline justify-content-center" action="/search">
+  <input name="longitude" id="longitude" class="form-control" type="text" placeholder="Longitude" readonly> 
+  <input name="latitude" id="latitude" class="form-control" type="text" placeholder="Latitude" readonly>
+  <select id="category" name="category" class="form-control">
+    <option selected='selected'><%= selectedCategory || 'General Practioners' %></option>
+    <% categories.forEach(function(category) { %>
+      <% if (category !== selectedCategory) { %>
+       <option><%= category %></option>
+      <% } %>
+    <% }); %>
+  </select>
+  <button type="submit" class="form-control btn-outline-primary">Find nearby doctors</button>
+</form>
+</div>

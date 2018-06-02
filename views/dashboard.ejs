@@ -1,0 +1,35 @@
+<%- include('partials/head', { title: 'Dashboard'}) %>
+<div></div>
+<%- include('partials/header') %>
+<div class="container">
+  <div class="row">
+    <%- include('partials/search') %>
+    <div class="col-12 align-content-center">
+      <div class="d-flex justify-content-center">
+        <h1 class="text-primary">Appointments</h1>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Code</th>
+            <th scope="col">Date</th>
+            <th scope="col">Time</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% appointments.forEach(function(appointment) { %>
+            <tr>
+              <th scope="row"><a title="<%-appointment.description%>" href="<%-`/api/view/appointment/${appointment.id}`%>"><%=appointment.code%></a></td>
+              <td><%=appointment.date%></td>
+              <td><%=appointment.time%></td>
+              <td><%=appointment.status%></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/foot'); %>

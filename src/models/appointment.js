@@ -5,17 +5,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isAlpha: true,
-        notEmpty: true,
-      }
-    },
-    caseType: {
-      type: DataTypes.ENUM('OLD', 'NEW'),
-    },
-    day: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
         notEmpty: true,
       }
     },
@@ -33,13 +22,6 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true,
       }
     },
-    phone: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      }
-    },
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -47,9 +29,9 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true,
       }
     },
-    confirm: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
+    status: {
+      type: DataTypes.ENUM('PENDING', 'CONFIRMED', 'CANCELLED'),
+      defaultValue: 'PENDING',
       validate: {
         notEmpty: true,
       }
@@ -63,10 +45,9 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   Appointment.associate = function(models) {
-    const { Doctor, Clinic, User } = models;
-    Appointment.belongsTo(Doctor);
-    Appointment.belongsTo(Clinic);
+    const { Doctor, User } = models;
     Appointment.belongsTo(User, { as: 'Patient'});
+    Appointment.belongsTo(User, { as: 'Doctor' });
   };
   return Appointment;
 };

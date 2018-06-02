@@ -1,0 +1,57 @@
+<%- include('partials/head', { title: 'Dashboard'}) %>
+<div></div>
+<%- include('partials/header') %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 m-sm-2 col-lg-6 align-content-center">
+      <h1 class="text-primary"><%=appointment.code%></h1>
+      <div class="form-group">
+        <label for="code">Appointment code</label>
+        <input id="code" class="form-control" type="text" readonly value="<%=appointment.code%>" >
+      </div>
+      <form action=<%=`/api/doctor/${doctor.id}`%>>
+        <div class="form-group">
+          <label for="doctor">Doctor</label>
+          <input id="doctor" class="form-control btn btn-outline-info" type="submit" value="<%=`Dr. ${doctor.surname} ${doctor.firstname}`%>" >
+        </div>
+      </form>
+      <form action="<%=`/api/user/public/${patient.id}`%>">
+        <div class="form-group">
+          <label for="patient">Patient</label>
+          <input id="patient" class="form-control btn btn-outline-info" type="submit" value="<%=`${patient.surname} ${patient.firstname}`%>" >
+        </div>
+      </form>
+      <div class="form-group">
+        <label for="date">Appointment Date</label>
+        <input id="date" class="form-control" type="date" value="<%=appointment.date%>" readonly >
+      </div>
+      <div class="form-group">
+        <label for="time">Appointment Time</label>
+        <input type="time" class="form-control" id="time" value="<%=appointment.time%>" readonly >
+      </div>
+      <div class="form-group">
+        <label for="created">Created on</label>
+        <input type="text" class="form-control" id="created" readonly value="<%=appointment.createdAt%>" >
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" value="<%=appointment.description%>" readonly></textarea>
+      </div>
+      <% if (isPatient && isPending) { %>
+        <form method="POST" action="<%-`/api/cancel/appointment/${appointment.id}`%>">
+          <div class="form-group">
+            <button "submit" class="btn btn-outline-danger">Cancel appointment</button>
+          </div>
+        </form>
+      <% } %>
+      <% if (isDoctor && isPending) { %>
+        <form method="POST" action="<%-`/api/confirm/appointment/${appointment.id}`%>">
+          <div class="form-group">
+            <button "submit" class="btn btn-outline-success">Confirm appointment</button>
+          </div>
+        </form>
+      <% } %>
+    </div>
+  </div>
+</div>
+<%- include('partials/foot'); %>

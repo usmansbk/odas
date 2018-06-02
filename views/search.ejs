@@ -1,0 +1,21 @@
+<%- include('partials/head', { title: 'Dashboard'}) %>
+<%- include('partials/searchheader') %>
+<div class="container">
+  <div class="row">
+    <%- include('partials/search') %>
+    <div class="col-12 align-content-center">
+      <h1>Found (<%= doctors.length %>) <%=selectedCategory%></h1>
+      <div class="list-group">
+        <% doctors.forEach(function(doctor) { %>
+          <a href=<%=`/api/doctor/${doctor.id}`%> class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+              <h4 class="mb-1">Dr. <%=doctor.surname%> <%=doctor.firstname%></h4>
+              <h4 class="mb-1">	&#x20A6;<%=doctor.fee%></h4>
+            </div>
+          </a>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('partials/foot'); %>

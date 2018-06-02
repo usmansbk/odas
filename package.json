@@ -2,11 +2,12 @@
   "name": "odas",
   "version": "1.0.0",
   "description": "Online Medical Consultation Scheduling Application",
-  "main": "build/server.js",
+  "main": "build/bin/www",
   "scripts": {
-    "start": "node build/bin/www",
-    "start:dev": "nodemon build/bin/www",
-    "build": "npx babel ./src --out-dir ./build --copy-files"
+    "start": "node build/www",
+    "start:dev": "nodemon build/www",
+    "build": "npx babel ./src --out-dir ./build --copy-files",
+    "build:dev": "npx babel ./src --watch --out-dir ./build --copy-files"
   },
   "keywords": [
     "Medical",
@@ -16,10 +17,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.4",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
+    "geolib": "^2.0.24",
     "morgan": "^1.9.0",
+    "nocache": "^2.0.0",
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.37.10",

@@ -1,0 +1,51 @@
+<%- include('partials/head') %>
+<%- include('partials/searchheader') %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 m-sm-2 col-lg-6 align-content-center">
+      <h4 class="text-info">My profile</h4>
+      <form method="POST" action=<%=`/api/update/user/${user.id}`%>>
+        <div class="form-group">
+          <lable for="firstname">Firstname</lable>
+          <input
+            name="firstname"
+            class="form-control"
+            type="text"
+            id="firstname"
+            value="<%= user.firstname%>"
+          />
+        </div>
+        <div class="form-group">
+          <lable for="surname">Surname</lable>
+          <input name="surname" class="form-control" type="text" id="surname" value="<%=user.surname%>" >
+        </div>
+        <div class="form-group">
+          <lable for="email">Email</lable>
+          <input name="email" class="form-control" type="email" id="email" value="<%=user.email%>" >
+        </div>
+        <div class="form-group">
+          <label for="accout-type">Account Type</label>
+          <select id="accout-type" class="form-control" name="accountType">
+              <option value="PATIENT">PATIENT</option>
+              <option value="DOCTOR">DOCTOR</option>
+            </select>
+        </div>
+        <div class="form-group">
+          <label for="accout-type">Gender</label>
+          <select id="accout-type" class="form-control" name="gender">
+              <option value="MALE">MALE</option>
+              <option value="FEMALE">FEMALE</option>
+            </select>
+        </div>
+        <div class="form-group">
+          <lable for="birthday">Birthday</lable>
+          <input name="birthday" class="form-control" type="date" id="birthday" value="<%=user.birthday%>" >
+        </div>
+        <div class="form-group">
+          <button class="form-control btn btn-outline-secondary" type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include('partials/foot'); %>

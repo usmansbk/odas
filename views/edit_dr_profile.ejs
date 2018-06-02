@@ -1,0 +1,68 @@
+<%- include('partials/head') %>
+<%- include('partials/searchheader') %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 m-sm-2 col-lg-6 align-content-center">
+      <h4 class="text-info">Update Professional Profile</h4>
+      <form method="POST" action=<%=`/api/update/doctor/${doctor.id}`%> >
+        <div class="form-group">
+          <lable for="degree">Degree</lable>
+          <input name="degree" class="form-control" type="text" id="degree" value="<%=doctor.degree%>" >
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <input name="category" class="form-control" type="text" id="category" value="<%=doctor.category%>" >
+        </div>
+        <div class="form-group">
+          <lable for="speciality">Speciality</lable>
+          <input name="speciality" class="form-control" type="text" id="speciality" value="<%=doctor.speciality%>" >
+        </div>
+        <div class="form-group">
+          <lable for="experience">Experience</lable>
+          <input name="experience" class="form-control" type="text" id="experience" value="<%=doctor.experience%>" >
+        </div>
+        <div class="form-group">
+          <lable for="fee">Consultation fee</lable>
+          <input name="fee" class="form-control" type="text" id="fee" value="<%=doctor.fee%>" >
+        </div>
+        <div class="form-group">
+          <lable for="country">Country</lable>
+          <input name="country" class="form-control" type="text" id="country" value="<%=doctor.country%>" >
+        </div>
+        <div class="form-group">
+          <lable for="city">City</lable>
+          <input name="city" class="form-control" type="text" id="city" value="<%=doctor.city%>" >
+        </div>
+        <div class="form-group">
+          <lable for="description">Description</lable>
+          <textarea name="description" class="form-control" type="text" id="description" value="<%=doctor.description%>" ></textarea>
+        </div>
+        <h5 class="text-secondary">Clinic Information</h5>
+        <div class="form-group">
+          <label for="cl_name">Name</label>
+          <input name="cl_name" id="cl_name" class="form-control" type="text" value="<%=doctor.cl_name%>" >
+        </div>
+        <div class="form-group">
+          <label for="cl_address">Address</label>
+          <input name="cl_address" id="cl_address" class="form-control" type="text" value="<%=doctor.cl_address%>" >
+        </div>
+        <div class="form-group">
+          <label for="cl_phone">Phone</label>
+          <input name="cl_phone" id="cl_phone" class="form-control" type="text" value="<%=doctor.cl_phone%>" >
+        </div>
+        <div class="form-group">
+          <label for="cl_fee">Fee</label>
+          <input name="cl_fee" id="cl_fee" class="form-control" type="text" value="<%=doctor.cl_fee%>" >
+        </div>
+        <div class="form-group">
+          <label for="cl_facilities">Facilities</label>
+          <textarea name="cl_facilities" id="cl_facilities" class="form-control" type="text" value="<%=doctor.cl_facilities%>"></textarea>
+        </div>
+        <div class="form-group">
+          <button class="form-control btn btn-outline-secondary" type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include('partials/foot'); %>

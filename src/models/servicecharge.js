@@ -17,9 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   ServiceCharge.associate = function(models) {
-    const { Doctor, Clinic, Appointment } = models;
+    const { Doctor, Appointment } = models;
     ServiceCharge.belongsTo(Doctor);
-    ServiceCharge.belongsTo(Clinic);
     ServiceCharge.hasOne(Appointment);
   };
   return ServiceCharge;

@@ -1,0 +1,41 @@
+<%- include('partials/head', { title: 'Dashboard'}) %>
+<div></div>
+<%- include('partials/header') %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 m-sm-2 col-lg-6 align-content-center">
+      <h1 class="text-primary">New Appointment</h1>
+      <form action="<%-`/api/appointment/${doctor.id}`%>" method="POST">
+        <div class="form-group">
+          <label for="code">Appointment code</label>
+          <input id="code" class="form-control" type="text" name="code" readonly value="AP/<%=date.getFullYear()%>/<%=date.getMonth()%>/<%=date.getDate()%>/<%=user.id%>/<%=count%>" >
+        </div>
+        <div class="form-group">
+          <label for="doctor">Doctor</label>
+          <input id="doctor" class="form-control" type="text" name="doctor" readonly value="<%=`Dr. ${doctor.surname} ${doctor.firstname}`%>" >
+        </div>
+        <div class="form-group">
+          <label for="patient">Patient</label>
+          <input id="patient" class="form-control" type="text" name="patient" readonly value="<%=`${user.surname} ${user.firstname}`%>" >
+        </div>
+        <div class="form-group">
+          <label for="date">Appointment Date</label>
+          <input id="date" class="form-control" type="date" name="date" >
+        </div>
+        <div class="form-group">
+          <label for="time">Appointment Time</label>
+          <input type="time" class="form-control" id="time" name="time" >
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control" id="description" name="description"></textarea>
+        </div>
+        <div class="form-group">
+          <button "submit" class="btn btn-outline-success">Submit</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+<%- include('partials/foot'); %>

@@ -1,0 +1,28 @@
+<%- include('partials/head', { title: 'ODAS | Login' }) %>
+<%- include('partials/nav') %>
+<div class="row justify-content-center">
+  <div class="col col-lg-6 p-3 m-4 card">    
+    <div class="d-flex flex-column">
+      <h3>Log In</h3>
+      <h6 class="text-info"><%= message %></h6>
+      <h6 class="text-danger"><%= error %></h6>
+    </div>    
+    <div>
+      <form method="POST" action="/login">
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input name="password" type="password" class="form-control" id="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include('partials/foot'); %>

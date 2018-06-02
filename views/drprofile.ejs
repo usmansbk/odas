@@ -1,0 +1,47 @@
+<%- include('partials/head') %>
+<div></div>
+<%- include('partials/searchheader') %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 m-sm-2 col-lg-6 align-content-center">
+      <div class="d-flex flex-row justify-content-lg-between">
+        <h4 class="text-info">Doctor Details</h4>
+        <form action="<%=`/api/appointment/${doctor.id}`%>">
+          <button type="submit" class="btn btn-outline-success">+ Make An Appointment</button>
+        </form>
+      </div>
+      <form>
+        <div class="form-group">
+          <label for="firstname">Firstname</label>
+          <input id="firstname" class="form-control" type="text" readonly value="<%=doctor.firstname%>" >
+        </div>
+        <div class="form-group">
+          <label for="surname">Surname</label>
+          <input id="surname" class="form-control" type="text" readonly value="<%=doctor.surname%>" >
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <input id="gender" class="form-control" type="text" readonly value="<%=doctor.gender%>" >
+        </div>
+      </form>
+      <%- include('partials/professional') %>
+      <h4 class="text-info">Review</h4>
+      <form>
+        <div class="form-group">
+          <label for="rv_manner">Manner</label>
+          <input id="rv_manner" class="form-control" type="text" readonly >
+        </div>
+        <div class="form-group">
+          <label for="rv_waiting_time">Waiting time</label>
+          <input id="rv_waiting_time" class="form-control" type="text" readonly >
+        </div>
+        <div class="form-group">
+          <label for="rv_approval">Approval</label>
+          <input id="rv_approval" class="form-control" type="text" readonly >
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/foot'); %>
