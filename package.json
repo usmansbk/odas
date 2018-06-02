@@ -5,6 +5,7 @@
   "main": "build/bin/www",
   "scripts": {
     "start": "node build/www",
+    "postinstall": "npm run build",
     "start:dev": "nodemon build/www",
     "build": "npx babel ./src --out-dir ./build --copy-files",
     "build:dev": "npx babel ./src --watch --out-dir ./build --copy-files"
