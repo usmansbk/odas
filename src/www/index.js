@@ -1,7 +1,7 @@
 import { sequelize } from '../models';
 import app from '../server';
 
-const PORT = 4000 || process.env.PORT;
+const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
   console.log(`ODAS app listening on port ${PORT}`);
