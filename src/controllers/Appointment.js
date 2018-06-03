@@ -47,6 +47,8 @@ export default class AppointmentController {
                     .then(patient => {
                       res.render('app_details', {
                         isPatient: false,
+                        isDoctor: false,
+                        isPending: appointment.status === 'PENDING',
                         appointment,
                         doctor,
                         patient,
