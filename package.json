@@ -38,5 +38,8 @@
     "nodemon": "^1.17.5",
     "npx": "^10.2.0",
     "sequelize-cli": "^4.0.0"
+  },
+  "engines": {
+    "node": "10.2.0"
   }
 }
