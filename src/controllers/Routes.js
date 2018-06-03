@@ -24,10 +24,13 @@ export default class Routes {
 
   static dashboard(req, res) {
     const { id } = req.session.user;
+    const hasAlert = req.session.hasAlert;
     User.findById(id)
       .then(user => user.getAppointments())
       .then(appointments => {
+        req.session.hasAlert = false;
         res.render('dashboard', {
+          hasNewAppointment,
           appointments,
           categories,
           user: req.session.user,

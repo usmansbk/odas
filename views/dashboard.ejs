@@ -8,6 +8,14 @@
       <div class="d-flex justify-content-center">
         <h1 class="text-primary">Appointments</h1>
       </div>
+      <% if (hasAlert) { %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Appointment <%=hasAlert.code%> created!</strong> scheduled for <%=hasAlert.date%> by <%=hasAlert.time%>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% } %>
       <table class="table">
         <thead>
           <tr>

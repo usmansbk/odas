@@ -73,6 +73,7 @@ export default class UserController {
             if (!foundDoctor) throw new Error('Failed to make appointment');
             return Appointment.create(req.body)
               .then(newAppointment => {
+                req.session.hasAlert = newAppointment;
                 return foundUser.addAppointment(newAppointment)
                   .then(result => foundDoctor.addAppointment(newAppointment))
                   .then(result => newAppointment.setPatient(foundUser))
