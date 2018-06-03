@@ -30,7 +30,7 @@ export default class Routes {
       .then(appointments => {
         req.session.hasAlert = false;
         res.render('dashboard', {
-          hasNewAppointment,
+          hasAlert,
           appointments,
           categories,
           user: req.session.user,
