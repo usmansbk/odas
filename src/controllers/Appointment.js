@@ -5,9 +5,9 @@ export default class AppointmentController {
     const { id } = req.params;
     const { user } = req.session;
 
-    User.findById(user.id)
+    User.findByPk(user.id)
       .then(user => {
-        return Appointment.findById(id)
+        return Appointment.findByPk(id)
         .then(appointment => {
           return appointment.update({status: 'CANCELLED'})
             .then(() => {
@@ -35,9 +35,9 @@ export default class AppointmentController {
     const { id } = req.params;
     const { user } = req.session;
 
-    User.findById(user.id)
+    User.findByPk(user.id)
       .then(user => {
-        return Appointment.findById(id)
+        return Appointment.findByPk(id)
         .then(appointment => {
           return appointment.update({status: 'CONFIRMED'})
             .then(() => {

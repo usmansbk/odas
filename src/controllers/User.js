@@ -17,7 +17,7 @@ export default class UserController {
 
   static getPublicProfile(req, res) {
     const { id } = req.params;
-    User.findById(id)
+    User.findByPk(id)
       .then(user => {
         if (!user) throw new Error('The link you followed may be broken');
           res.render('user_public_profile', {
@@ -30,9 +30,9 @@ export default class UserController {
   static getAppointment(req, res) {
     const { id } = req.params;
     const { user } = req.session;
-    User.findById(user.id)
+    User.findByPk(user.id)
       .then(user => {
-        return Appointment.findById(id)
+        return Appointment.findByPk(id)
           .then(appointment => {
             return appointment.getDoctor()
               .then(doctor => {
@@ -58,7 +58,7 @@ export default class UserController {
   static makeAppointment(req, res) {
     const { id } = req.params;
     const { user } = req.session;
-    User.findById(user.id)
+    User.findByPk(user.id)
       .then(foundUser => {
         return User.findOne({include: [
           {
@@ -90,9 +90,9 @@ export default class UserController {
   static newAppointment(req, res) {
     const { id } = req.params;
     const { user } = req.session;
-    User.findById(user.id)
+    User.findByPk(user.id)
       .then(verifiedUser => {
-        Doctor.findById(id)
+        Doctor.findByPk(id)
         .then(doctor => {
           verifiedUser.getAppointments()
             .then(appointments => {
@@ -111,7 +111,7 @@ export default class UserController {
 
   static editProfile(req, res) {
     const { id } = req.params;
-    User.findById(id)
+    User.findByPk(id)
       .then(user => {
         res.render('edit_user_profile', {
           user,
@@ -122,7 +122,7 @@ export default class UserController {
 
   static updateProfile(req, res) {
     const { id } = req.params;
-    User.findById(id)
+    User.findByPk(id)
       .then(user => {
         if (!user) throw new Error('The link you followed may be broken');
         user.update(req.body)
@@ -151,7 +151,7 @@ export default class UserController {
 
   static getProfile(req, res) {
     const { id } = req.params;
-    User.findById(id)
+    User.findByPk(id)
       .then(user => {
         if (!user) throw new Error('The link you followed may be broken');
         user.getDoctorProfile()
@@ -186,7 +186,7 @@ export default class UserController {
       where: { email: req.body.email},
       defaults: req.body,
     })
-    .spread((user, created) => {
+    .then((user, created) => {
       if (!created) {
         const ConflictError = new Error('User already exist. Login or use another email');
         ConflictError.name = ERROR_NAME;

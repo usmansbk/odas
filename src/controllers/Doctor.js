@@ -21,7 +21,7 @@ export default class DoctorController {
 
   static editProfile(req, res) {
     const { id } = req.params;
-    Doctor.findById(id)
+    Doctor.findByPk(id)
       .then(doctor => {
         if (!doctor) throw new Error("The page you followed may be broken");
         res.render("edit_dr_profile", {
@@ -36,7 +36,7 @@ export default class DoctorController {
 
   static getProfile(req, res) {
     const { id } = req.params;
-    Doctor.findById(id)
+    Doctor.findByPk(id)
       .then(doctor => {
         if (!doctor) throw new Error("The page you followed may be broken");
         res.render('drprofile', {
@@ -52,7 +52,7 @@ export default class DoctorController {
   static updateProfile(req, res) {
     const { id } = req.params;
     const user = req.session.user;
-    Doctor.findById(id)
+    Doctor.findByPk(id)
       .then(doctor => {
         if (!doctor) throw new Error('The page you followed may be broken');
         console.log(req.body);
