@@ -26,12 +26,12 @@ export default class Routes {
     const { id } = req.session.user;
     const hasAlert = req.session.hasAlert;
     User.findByPk(id)
-      .then(user => user.getAppointments())
+      .then(user => user && user.getAppointments())
       .then(appointments => {
         req.session.hasAlert = false;
         res.render('dashboard', {
           hasAlert,
-          appointments,
+          appointments: appointments || [],
           categories,
           user: req.session.user,
           selectedCategory: DEFAUL_CATEGORY,

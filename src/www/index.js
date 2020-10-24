@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`ODAS app listening on port ${PORT}`);
   sequelize
-    .sync({ force: false })
+    .sync({ force: true})
     .then(() => {
       console.log('Connection has been establised successfully.');
     })
