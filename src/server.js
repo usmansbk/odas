@@ -13,7 +13,7 @@ const app = express();
 app.set('view engine', 'ejs');
 
 const secret = uuid();
-const clientErrorHandler = (err, req, res, next) => {
+const clientErrorHandler = (err, _req, res, _next) => {
   console.error(err);
   res.status(500).json({
     error: 'Server has failed!',

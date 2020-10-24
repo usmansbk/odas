@@ -1,7 +1,6 @@
-import { auth, checkSession, deAuth } from './auth';
+import { auth, deAuth } from './auth';
 
 export {
   auth,
-  checkSession,
   deAuth,
 }
