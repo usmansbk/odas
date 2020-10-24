@@ -25,7 +25,7 @@ app.use(favicon(path.join(__dirname, '../public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(session({ secret }));
+app.use(session({ secret, resave: false, saveUninitialized: true }));
 app.use(morgan('tiny'));
 app.use('/api', authMiddleware);
 app.use('/dashboard', authMiddleware);
