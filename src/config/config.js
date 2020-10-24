@@ -1,20 +1,25 @@
 module.exports = {
   development: {
-    username: "root",
-    password: null,
+    username: "postgres",
+    password: "postgres",
     database: "odas_dev",
-    host: "127.0.0.1",
+    host: "localhost",
     dialect: "postgres",
     logging: false
   },
   test: {
-    username: "root",
-    password: null,
+    username: "postgres",
+    password: "postgres",
     database: "database_test",
-    host: "127.0.0.1",
+    host: "localhost",
     dialect: "postgres"
   },
   production: {
-    use_env_variable: 'DATABASE_URL'
+    use_env_variable: 'DATABASE_URL',
+    username: "postgres",
+    password: "postgres",
+    database: "database_test",
+    host: "localhost",
+    dialect: "postgres"
   },
 }
