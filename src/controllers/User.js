@@ -3,16 +3,6 @@ import db from '../models';
 const { User, Doctor, Appointment } = db;
 const ERROR_NAME = 'ODAS_Error';
 
-const validate = (form) => {
-  let valid = true;
-  for (let field of Object.values(form)) {
-    if (!Boolean(field)) {
-      return false;
-    }
-  }
-  return valid;
-}
-
 export default class UserController {
 
   static getPublicProfile(req, res) {
@@ -203,6 +193,7 @@ export default class UserController {
       res.redirect('/dashboard');
     })
     .catch(error => {
+      console.log(error);
       let message = 'Invalid form data';
       if (error.name === ERROR_NAME) message = error.message;
       res.status(400).render('signup', {
