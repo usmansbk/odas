@@ -19,27 +19,27 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.4",
-    "ejs": "^2.6.1",
+    "ejs": "^3.1.5",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
-    "geolib": "^2.0.24",
+    "geolib": "^3.3.1",
     "morgan": "^1.9.0",
     "nocache": "^2.0.0",
-    "pg": "^7.4.3",
+    "pg": "^8.4.1",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.37.10",
+    "sequelize": "^6.3.5",
     "serve-favicon": "^2.5.0",
-    "uuid": "^3.2.1"
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "nodemon": "^1.17.5",
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "nodemon": "^2.0.6",
     "npx": "^10.2.0",
-    "sequelize-cli": "^4.0.0"
+    "sequelize-cli": "^6.2.0"
   },
   "engines": {
-    "node": "10.2.0"
+    "node": "14.8.0"
   }
 }

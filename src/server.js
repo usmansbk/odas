@@ -1,12 +1,12 @@
 import express from 'express';
 import session from 'express-session';
 import path from 'path';
-import uuid from 'uuid/v1';
+import { v1 as uuid } from 'uuid';
 import nocache from 'nocache';
 import favicon from 'serve-favicon';
 import morgan from 'morgan';
 import { appRouter, apiRouter } from './routes';
-import { auth as authMiddleware, checkSession, deAuth } from './middlewares';
+import { auth as authMiddleware, deAuth } from './middlewares';
 
 const app = express();
 
