@@ -172,28 +172,20 @@ export default class UserController {
       });
   }
   static createAccount(req, res) {
-    User.findOrCreate({
-      where: { email: req.body.email},
-      defaults: req.body,
-    })
-    .then((user, created) => {
-      if (!created) {
-        const ConflictError = new Error('User already exist. Login or use another email');
-        ConflictError.name = ERROR_NAME;
-        throw ConflictError;
-      }
+    User.create(req.body)
+    .then(async (user) => {
       const { accountType } = req.body;
-      if (!user || (accountType === 'PATIENT')) return user;
-      return Doctor.create(req.body)
-        .then((newDoctor => user.setDoctorProfile(newDoctor)))
-        .then(() => user);
+      if (!user || (accountType === 'DOCTOR')) {
+        const doctor = await Doctor.create(req.body);
+        await user.setDoctorProfile(doctor);
+      }
+      return user;
     })
     .then(newUser => {
       req.session.user = newUser;
       res.redirect('/dashboard');
     })
     .catch(error => {
-      console.log(error);
       let message = 'Invalid form data';
       if (error.name === ERROR_NAME) message = error.message;
       res.status(400).render('signup', {
